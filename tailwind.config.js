@@ -6,7 +6,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          dark: '#232321',
+          blue: '#4A69E2',
+        },
+      },
+    },
   },
   plugins: [daisyui],
   daisyui: {
