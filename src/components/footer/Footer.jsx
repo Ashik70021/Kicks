@@ -1,59 +1,153 @@
+import { useState } from 'react';
+
 const Footer = () => {
+    const [email, setEmail] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle newsletter submission
+        console.log('Newsletter signup:', email);
+        setEmail('');
+    };
+
     return (
-        <footer className="footer bg-base-300 text-base-content p-10">
-            <nav>
-                <h6 className="footer-title">Services</h6>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
-            </nav>
-            <nav>
-                <h6 className="footer-title">Company</h6>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
-            </nav>
-            <nav>
-                <h6 className="footer-title">Social</h6>
-                <div className="grid grid-flow-col gap-4">
-                    <a>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            className="fill-current">
-                            <path
-                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                        </svg>
-                    </a>
-                    <a>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            className="fill-current">
-                            <path
-                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                        </svg>
-                    </a>
-                    <a>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            className="fill-current">
-                            <path
-                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                        </svg>
-                    </a>
+        <div className="mt-16">
+            {/* Newsletter Section */}
+            <div className="bg-[#4A69E2] rounded-[48px] overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-16 pb-36 lg:pb-44">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                        {/* Left Side - Newsletter Header & text */}
+                        <div className="flex-1 text-white max-w-xl">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 uppercase">
+                                Join our KicksPlus Club & get 15% off
+                            </h2>
+                            <p className="text-base sm:text-lg mb-6 opacity-90">
+                                Sign up for free! Join the community.
+                            </p>
+                            
+                            {/* Newsletter Form */}
+                            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                                <input 
+                                    type="email" 
+                                    placeholder="Email address"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="flex-1 px-4 py-3 rounded-lg bg-transparent border-2 border-white text-white placeholder:text-white placeholder:opacity-70 focus:outline-none focus:ring-2 focus:ring-white"
+                                    required
+                                />
+                                <button 
+                                    type="submit"
+                                    className="bg-[#232321] text-white px-8 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all uppercase"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+
+                        {/* Right Side - Logo */}
+                        <div className="flex-shrink-0 relative">
+                            <img 
+                                src="/Images/Group.png" 
+                                alt="Kicks Logo" 
+                                className="w-48 sm:w-56 lg:w-64 h-auto"
+                            />
+                            {/* Yellow Circle with + */}
+                            <div className="absolute -top-5 -right-3 bg-[#FFA52F] rounded-full w-6 h-6 flex items-center justify-center">
+                                <span className="text-[#4A69E2] font-bold">+</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-        </footer>
+            </div>
+
+            {/* Footer Section */}
+            <div className="bg-[#232321] relative overflow-hidden rounded-[48px] -mt-20 lg:-mt-28 pt-24 lg:pt-32">
+                <div className="max-w-12xl mx-auto px-6 sm:px-8 lg:px-16 pb-38 lg:pb-64">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-40">
+                        {/* First Grid - About Us */}
+                        <div>
+                            <h6 className="text-[#FFA52F] font-bold text-[30px] mb-4 uppercase">About us</h6>
+                            <p className="text-[#E7E7E3] text-base leading-relaxed max-w-md">
+                                We are the biggest hyperstore in the universe. We got you all cover with our exclusive collections and latest drops.
+                            </p>
+                        </div>
+
+                        {/* Second Grid - Other 3 Sections */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+                            {/* Categories */}
+                            <div>
+                                <h6 className="text-[#FFA52F] font-bold text-lg mb-4 uppercase">Categories</h6>
+                                <ul className="space-y-2">
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Runners</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Sneakers</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Basketball</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Outdoor</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Golf</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Hiking</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Company */}
+                            <div>
+                                <h6 className="text-[#FFA52F] font-bold text-lg mb-4 uppercase">Company</h6>
+                                <ul className="space-y-2">
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">About</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Contact</a></li>
+                                    <li><a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">Blogs</a></li>
+                                </ul>
+                            </div>
+
+                            {/* Follow Us */}
+                            <div>
+                                <h6 className="text-[#FFA52F] font-bold text-lg mb-4 uppercase">Follow us</h6>
+                                <div className="flex gap-4">
+                                    {/* Facebook */}
+                                    <a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                                        </svg>
+                                    </a>
+                                    {/* Instagram */}
+                                    <a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                        </svg>
+                                    </a>
+                                    {/* Twitter */}
+                                    <a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                        </svg>
+                                    </a>
+                                    {/* TikTok */}
+                                    <a href="#" className="text-[#E7E7E3] hover:text-[#4A69E2] transition-colors">
+                                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom Logo - Half Visible */}
+                <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 right-4 sm:left-8 sm:right-8 md:left-12 md:right-12 lg:left-16 lg:right-16 pointer-events-none">
+                    <img 
+                        src="/Images/Group.png" 
+                        alt="Kicks" 
+                        className="w-full h-auto transform translate-y-1/2"
+                    />
+                </div>
+            </div>
+
+            {/* Copyright Section */}
+            <div className="text-center py-6">
+                <p className="text-[#232321] text-base">
+                    © All rights reserved
+                </p>
+            </div>
+        </div>
     );
 };
 
