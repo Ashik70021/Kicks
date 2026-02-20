@@ -20,7 +20,7 @@ const StarRating = ({ rating }) => {
 
 const Reviews = () => {
     return (
-        <section className="max-w-12xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+        <section className="mx-4 sm:mx-16 lg:mx-32 py-8">
             {/* Review Header */}
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-3xl sm:text-4xl font-bold text-[#232321]">REVIEWS</h2>

@@ -16,10 +16,10 @@ const Banner = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-4 sm:mx-16 lg:mx-32">
             {/* Do it Right text */}
-            <div className="flex justify-center">
-                <h1 className="text-[clamp(2rem,15vw,18.75rem)] font-bold whitespace-nowrap">
+            <div className="flex justify-center ">
+                <h1 className="text-[clamp(1.5rem,14vw,18rem)] font-bold whitespace-nowrap">
                     DO IT <span className="text-[#4A69E2]">RIGHT</span>
                 </h1>
             </div>

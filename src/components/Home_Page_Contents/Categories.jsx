@@ -35,10 +35,10 @@ const Categories = () => {
 
     return (
         <section className="bg-[#232321] pt-12 my-16 overflow-hidden">
-            <div className="max-w-12xl mx-auto">
+            <div className="ml-4 sm:ml-16 lg:ml-32">
                 {/* Header */}
-                <div className="flex items-center justify-between px-6 sm:px-8 lg:px-12 mb-8">
-                    <h2 className="text-3xl sm:text-5xl font-bold text-white">CATEGORIES</h2>
+                <div className="flex items-center justify-between mb-8 pr-4 sm:pr-16 lg:pr-32">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white">CATEGORIES</h2>
                     <div className="flex items-center gap-3">
                         <button
                             onClick={handlePrev}
@@ -80,14 +80,14 @@ const Categories = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className="flex flex-col sm:flex-row gap-0 pt-6 pl-6 sm:pl-8 lg:pl-80 pr-0">
+                    <div className="flex flex-col sm:flex-row gap-0 pt-6 pr-0">
                         {visible.map((cat, i) => (
                             <div
                                 key={cat.id}
                                 className={`flex flex-col flex-1 overflow-hidden bg-[#f5f5f0] group ${index === 0 && i === 0 ? 'rounded-tl-[48px]' : ''}`}
                             > 
                                 {/* Product image */}
-                                <div className="h-[350px] sm:h-[500px] m-3 rounded-2xl overflow-hidden">
+                                <div className="h-[350px] sm:h-[500px] m-3 mb-0 rounded-2xl overflow-hidden">
                                     <img
                                         src={cat.image}
                                         alt={cat.name}
@@ -96,7 +96,7 @@ const Categories = () => {
                                 </div>
 
                                 {/* Name + button below image */}
-                                <div className="px-12 sm:px-40 py-4 flex items-center justify-between">
+                                <div className="px-12 sm:px-52 pb-8 flex items-center justify-between">
                                     <h3 className="text-2xl sm:text-4xl font-bold text-[#232321] uppercase leading-tight">
                                         {cat.name}
                                     </h3>

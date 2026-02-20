@@ -11,7 +11,7 @@ const Footer = () => {
     };
 
     return (
-        <div className="mt-16 mx-4 sm:mx-8">
+        <div className="mt-16 mx-4 sm:mx-16 lg:mx-32">
             {/* Newsletter Section */}
             <div className="bg-[#4A69E2] rounded-[48px] overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-16 pb-36 lg:pb-44">
