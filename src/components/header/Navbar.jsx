@@ -5,7 +5,7 @@ const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <nav className="bg-white shadow-sm sticky top-0 z-50 rounded-2xl">
+        <nav className="mx-4 sm:mx-8 bg-white shadow-sm sticky top-0 z-50 rounded-2xl">
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Left side - Hamburger Menu (Mobile) & Menu Items (Desktop) */}
