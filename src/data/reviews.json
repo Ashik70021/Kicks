@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "comment": "Good Quality",
+        "description": "I highly recommend shopping from kicks",
+        "rating": 5.0,
+        "profilePic": "/Images/Reviews/Ellipse1.png",
+        "productImage": "/Images/Reviews/image38.png"
+    },
+    {
+        "id": 2,
+        "comment": "Good Quality",
+        "description": "I highly recommend shopping from kicks",
+        "rating": 5.0,
+        "profilePic": "/Images/Reviews/Ellipse2.png",
+        "productImage": "/Images/Reviews/image39.png"
+    },
+    {
+        "id": 3,
+        "comment": "Good Quality",
+        "description": "I highly recommend shopping from kicks",
+        "rating": 5.0,
+        "profilePic": "/Images/Reviews/Ellipse3.png",
+        "productImage": "/Images/Reviews/image40.png"
+    }
+]
