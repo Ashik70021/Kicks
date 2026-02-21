@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import ProductCard from '../common/ProductCard';
 
+const PAGE_SIZE = 4;
+
 const New_Drops = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
@@ -22,6 +25,10 @@ const New_Drops = () => {
             });
     }, []);
 
+    const handlePrev = () => setPage((p) => Math.max(0, p - PAGE_SIZE));
+    const handleNext = () => setPage((p) => Math.min(products.length - PAGE_SIZE, p + PAGE_SIZE));
+    const visible = products.slice(page, page + PAGE_SIZE);
+
     return (
         <section className="mx-4 sm:mx-16 lg:mx-32 py-8 pt-20">
             {/* New Drops Header */}
@@ -29,9 +36,26 @@ const New_Drops = () => {
                 <h2 className="text-2xl sm:text-6xl font-bold text-[#232321]">
                     DON'T MISS OUT <br />NEW DROPS
                 </h2>
-                <button className="bg-[#4A69E2] hover:bg-[#3555c8] transition-colors text-white text-[11px] sm:text-sm font-semibold px-5 py-2.5 rounded-md">
-                    SHOP NEW DROPS
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={handlePrev}
+                        disabled={page === 0}
+                        className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232321]/30 text-[#232321] disabled:opacity-30 hover:bg-[#232321]/10 transition-colors"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button
+                        onClick={handleNext}
+                        disabled={page + PAGE_SIZE >= products.length}
+                        className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#232321] text-white disabled:opacity-30 hover:bg-[#3a3a38] transition-colors"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             {/* Loading */}
@@ -49,7 +73,7 @@ const New_Drops = () => {
             {/* New Drops Cards */}
             {!loading && !error && (
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    {products.slice(0, 4).map((product) => (
+                    {visible.map((product) => (
                         <ProductCard
                             key={product.id}
                             product={{

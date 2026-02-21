@@ -39,7 +39,7 @@ const Also_Like_Products = () => {
                     <button
                         onClick={handlePrev}
                         disabled={page === 0}
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#232321]/30 text-[#232321] disabled:opacity-30 hover:bg-[#232321]/10 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center rounded-lg border border-[#232321]/30 text-[#232321] disabled:opacity-30 hover:bg-[#232321]/10 transition-colors"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -48,7 +48,7 @@ const Also_Like_Products = () => {
                     <button
                         onClick={handleNext}
                         disabled={page + PAGE_SIZE >= products.length}
-                        className="w-10 h-10 flex items-center justify-center rounded-full border border-[#232321]/30 text-[#232321] disabled:opacity-30 hover:bg-[#232321]/10 transition-colors"
+                        className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#232321] text-white disabled:opacity-30 hover:bg-[#3a3a38] transition-colors"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

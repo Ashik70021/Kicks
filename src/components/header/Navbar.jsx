@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 
 const Navbar = () => {
-    const [cartCount, setCartCount] = useState(0);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { totalItems } = useCart();
+    const navigate = useNavigate();
 
     return (
         <nav className="mx-4 sm:mx-16 lg:mx-32 bg-white shadow-sm sticky top-0 z-50 rounded-2xl">
@@ -56,11 +59,11 @@ const Navbar = () => {
 
                     {/* Center - Logo */}
                     <div className="flex-shrink-0 absolute left-1/2 transform -translate-x-1/2">
-                        <img 
+                        <a href="/"><img 
                             src="/Images/Logo.png" 
                             alt="Logo" 
                             className="h-6 w-auto"
-                        />
+                        /></a>
                     </div>
 
                     {/* Right side - Icons */}
@@ -102,7 +105,7 @@ const Navbar = () => {
                         </button>
 
                         {/* Cart Icon with Badge */}
-                        <button className="relative text-[#232321] hover:text-[#4A69E2] transition-colors">
+                        <button onClick={() => navigate('/cart')} className="relative text-[#232321] hover:text-[#4A69E2] transition-colors">
                             <svg 
                                 xmlns="http://www.w3.org/2000/svg" 
                                 className="h-5 w-5 sm:h-6 sm:w-6" 
@@ -118,9 +121,11 @@ const Navbar = () => {
                                 />
                             </svg>
                             {/* Yellow Badge with Cart Count */}
-                            <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#232321] text-xs font-semibold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center">
-                                {cartCount}
-                            </span>
+                            {totalItems > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-yellow-400 text-[#232321] text-xs font-semibold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center">
+                                    {totalItems > 99 ? '99+' : totalItems}
+                                </span>
+                            )}
                         </button>
                     </div>
                 </div>

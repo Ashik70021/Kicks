@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 
 const SIZES = [38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const COLORS = [
@@ -9,12 +10,42 @@ const COLORS = [
 
 const Details = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const { addToCart } = useCart();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedImage, setSelectedImage] = useState(0);
     const [selectedColor, setSelectedColor] = useState(0);
     const [selectedSize, setSelectedSize] = useState(null);
+    const [addedMsg, setAddedMsg] = useState(false);
+
+    const handleAddToCart = () => {
+        if (!selectedSize) return;
+        addToCart({
+            id: product.id,
+            name: product.title,
+            price: product.price,
+            image: product.images?.[0],
+            color: COLORS[selectedColor].name,
+            size: selectedSize,
+        });
+        setAddedMsg(true);
+        setTimeout(() => setAddedMsg(false), 2000);
+    };
+
+    const handleBuyNow = () => {
+        if (!selectedSize) return;
+        addToCart({
+            id: product.id,
+            name: product.title,
+            price: product.price,
+            image: product.images?.[0],
+            color: COLORS[selectedColor].name,
+            size: selectedSize,
+        });
+        navigate('/cart');
+    };
 
     useEffect(() => {
         setLoading(true);
@@ -218,9 +249,16 @@ const Details = () => {
                     </div>
 
                     {/* Buttons */}
+                    {!selectedSize && (
+                        <p className="text-xs text-red-500 -mb-2">Please select a size to continue.</p>
+                    )}
                     <div className="flex gap-3 mt-1">
-                        <button className="flex-1 bg-[#232321] hover:bg-[#3a3a38] transition-colors text-white font-bold py-3.5 rounded-xl text-sm tracking-wider">
-                            ADD TO CART
+                        <button
+                            onClick={handleAddToCart}
+                            disabled={!selectedSize}
+                            className="flex-1 bg-[#232321] hover:bg-[#3a3a38] disabled:opacity-40 transition-colors text-white font-bold py-3.5 rounded-xl text-sm tracking-wider"
+                        >
+                            {addedMsg ? '✓ ADDED!' : 'ADD TO CART'}
                         </button>
                         <button className="bg-[#232321] w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-300 hover:border-[#3555c8] hover:text-[#3555c8] transition-colors text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -228,7 +266,11 @@ const Details = () => {
                             </svg>
                         </button>
                     </div>
-                    <button className="w-full bg-[#4A69E2] hover:bg-[#3555c8] transition-colors text-white font-bold py-3.5 rounded-xl text-sm tracking-wider">
+                    <button
+                        onClick={handleBuyNow}
+                        disabled={!selectedSize}
+                        className="w-full bg-[#4A69E2] hover:bg-[#3555c8] disabled:opacity-40 transition-colors text-white font-bold py-3.5 rounded-xl text-sm tracking-wider"
+                    >
                         BUY IT NOW
                     </button>
 
