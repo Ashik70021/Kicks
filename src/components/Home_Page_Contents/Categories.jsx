@@ -14,7 +14,7 @@ const Categories = () => {
                 return res.json();
             })
             .then((data) => {
-                setCategories(data);
+                setCategories(data.slice(1));
                 setLoading(false);
             })
             .catch((err) => {
@@ -43,7 +43,7 @@ const Categories = () => {
                         <button
                             onClick={handlePrev}
                             disabled={index === 0}
-                            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white disabled:opacity-30 hover:bg-white/10 transition-colors"
+                            className="w-10 h-10 flex items-center justify-center rounded-lg border border-white/30 text-white disabled:opacity-30 hover:bg-white/10 transition-colors"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -52,7 +52,7 @@ const Categories = () => {
                         <button
                             onClick={handleNext}
                             disabled={index >= categories.length - 2}
-                            className="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 text-white disabled:opacity-30 hover:bg-white/10 transition-colors"
+                            className="w-10 h-10 flex items-center justify-center rounded-lg bg-white text-[#232321] disabled:opacity-30 hover:bg-white/80 transition-colors"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -80,27 +80,28 @@ const Categories = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className="flex flex-col sm:flex-row gap-0 pt-6 pr-0">
+                    <div className="flex flex-col sm:flex-row gap-0 pt-8">
                         {visible.map((cat, i) => (
                             <div
                                 key={cat.id}
-                                className={`flex flex-col flex-1 overflow-hidden bg-[#f5f5f0] group ${index === 0 && i === 0 ? 'rounded-tl-[48px]' : ''}`}
-                            > 
-                                {/* Product image */}
-                                <div className="h-[350px] sm:h-[500px] m-3 mb-0 rounded-2xl overflow-hidden">
-                                    <img
-                                        src={cat.image}
-                                        alt={cat.name}
-                                        className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                </div>
+                                className={`relative flex-1 h-[320px] sm:h-[620px] overflow-hidden group cursor-pointer ${index === 0 && i === 0 ? 'rounded-tl-[48px]' : ''}`}
+                            >
+                                {/* Full image */}
+                                <img
+                                    src={cat.image}
+                                    alt={cat.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
 
-                                {/* Name + button below image */}
-                                <div className="px-12 sm:px-52 pb-8 flex items-center justify-between">
-                                    <h3 className="text-2xl sm:text-4xl font-bold text-[#232321] uppercase leading-tight">
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+                                {/* Name + button inside image at bottom */}
+                                <div className="absolute bottom-2 left-0 right-0 px-6 pb-6 flex items-end justify-between">
+                                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white uppercase leading-tight">
                                         {cat.name}
                                     </h3>
-                                    <button className="w-11 h-11 flex items-center justify-center rounded-xl bg-[#4A69E2] hover:bg-[#3555c8] transition-colors text-white flex-shrink-0">
+                                    <button className="w-11 h-11 flex-shrink-0 flex items-center justify-center rounded-xl bg-[#232321] hover:bg-[#4A69E2] transition-colors text-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
                                         </svg>

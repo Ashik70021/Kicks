@@ -18,7 +18,7 @@ const Banner = () => {
     return (
         <div className="mx-4 sm:mx-16 lg:mx-32">
             {/* Do it Right text */}
-            <div className="flex justify-center ">
+            <div className="flex justify-center animate-fade-in-up">
                 <h1 className="text-[clamp(1.5rem,14vw,18rem)] font-bold whitespace-nowrap">
                     DO IT <span className="text-[#4A69E2]">RIGHT</span>
                 </h1>
@@ -26,7 +26,7 @@ const Banner = () => {
 
             {/* Banner */}
             <div
-                className="relative w-full rounded-[48px] overflow-hidden"
+                className="relative w-full rounded-[48px] overflow-hidden animate-fade-in-up delay-150"
                 style={{
                     backgroundImage: `url('${slides[active].bg}')`,
                     backgroundSize: 'cover',
@@ -34,8 +34,11 @@ const Banner = () => {
                     minHeight: '560px',
                 }}
             >
+                {/* Fade overlay keyed to active slide */}
+                <div key={active} className="absolute inset-0 animate-fade-in pointer-events-none" />
+
                 {/* Top-left vertical label */}
-                <div className="absolute top-8 sm:top-12 left-0 z-10">
+                <div className="absolute top-8 sm:top-12 left-0 z-10 animate-fade-in-up delay-300">
                     <div className="bg-black/80 text-white text-[8px] sm:text-[11px] font-medium tracking-widest uppercase px-1.5 sm:px-2 py-2 sm:py-3 rounded-tl-xl rounded-bl-xl"
                         style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
                         Nike product of the year
@@ -43,18 +46,18 @@ const Banner = () => {
                 </div>
 
                 {/* Bottom-left content */}
-                <div className="absolute bottom-3 sm:bottom-8 left-3 sm:left-8 z-10 text-white">
+                <div className="absolute bottom-3 sm:bottom-8 left-3 sm:left-8 z-10 text-white animate-fade-in-up delay-200">
                     <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold leading-tight">NIKE AIR MAX</h1>
                     <p className="mt-1 sm:mt-2 text-[11px] sm:text-[10px] sm:text-sm lg:text-base max-w-[130px] sm:max-w-xs text-[#E7E7E3]">
                         Nike introducing the new air max for everyone's comfort
                     </p>
-                    <button className="my-8 sm:my-2 sm:mt-4 bg-[#4A69E2] hover:bg-[#3555c8] transition-colors text-white text-[10px] sm:text-sm font-semibold px-3 sm:px-6 py-1.5 sm:py-2.5 rounded-md">
+                    <button className="my-8 sm:my-2 sm:mt-4 bg-[#4A69E2] hover:bg-[#3555c8] hover:scale-105 active:scale-95 transition-all duration-200 text-white text-[10px] sm:text-sm font-semibold px-3 sm:px-6 py-1.5 sm:py-2.5 rounded-md">
                         SHOP NOW
                     </button>
                 </div>
 
                 {/* Bottom-right thumbnail slider buttons */}
-                <div className="absolute bottom-11 sm:bottom-6 right-6  z-10 flex flex-col gap-3">
+                <div className="absolute bottom-11 sm:bottom-6 right-6 z-10 flex flex-col gap-3 animate-slide-in-right delay-300">
                     {slides.map((slide, i) => (
                         <button
                             key={i}

@@ -34,7 +34,7 @@ const Reviews = () => {
                 {reviews.map((review) => (
                     <div
                         key={review.id}
-                        className="bg-white rounded-2xl overflow-hidden shadow-sm"
+                        className="bg-white rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     >
                         {/* Top: comments & profile */}
                         <div className="flex items-start justify-between px-5 pt-5 pb-4">
