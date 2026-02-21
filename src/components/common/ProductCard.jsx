@@ -1,5 +1,8 @@
-const ProductCard = ({ product, onViewProduct }) => {
-    const { image, name, price, isNew } = product;
+import { useNavigate } from 'react-router-dom';
+
+const ProductCard = ({ product }) => {
+    const { id, image, name, price, isNew } = product;
+    const navigate = useNavigate();
 
     return (
         <div className="flex flex-col w-full">
@@ -26,7 +29,7 @@ const ProductCard = ({ product, onViewProduct }) => {
 
                 {/* Button */}
                 <button
-                    onClick={() => onViewProduct?.(product)}
+                    onClick={() => navigate(`/product/${id}`)}
                     className="w-full bg-[#232321] hover:bg-[#3a3a38] transition-colors text-white text-[10px] sm:text-sm  py-2 sm:py-3 px-2 sm:px-4 rounded-lg tracking-wide flex items-center justify-center gap-1 whitespace-nowrap"
                 >
                     VIEW PRODUCT -{" "}
