@@ -3,8 +3,8 @@ import Footer from "../components/footer/Footer"
 import { Outlet } from "react-router-dom";
 const MainLayout = () => {
     return (
-        <div className=" pt-4"> 
-            <div className="">
+        <div className="pt-4"> 
+            <div>
                 <Navbar></Navbar>
             </div>
             <div className="min-h-screen">
