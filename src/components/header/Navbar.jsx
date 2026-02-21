@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 
 const Navbar = () => {
@@ -45,15 +45,15 @@ const Navbar = () => {
 
                         {/* Desktop Menu - Hidden on Mobile */}
                         <div className="hidden lg:flex items-center space-x-8">
-                            <a href="#" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
+                            <Link to="/all-items?filter=new_drops" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
                                 New Drops
-                            </a>
-                            <a href="#" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
+                            </Link>
+                            <Link to="/all-items?filter=men" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
                                 Men
-                            </a>
-                            <a href="#" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
+                            </Link>
+                            <Link to="/all-items?filter=women" className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors">
                                 Women
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -134,27 +134,27 @@ const Navbar = () => {
                 {isMobileMenuOpen && (
                     <div className="lg:hidden py-4 border-t border-gray-200">
                         <div className="flex flex-col space-y-3">
-                            <a 
-                                href="#" 
+                            <Link 
+                                to="/all-items?filter=new_drops" 
                                 className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors py-2"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 New Drops
-                            </a>
-                            <a 
-                                href="#" 
+                            </Link>
+                            <Link 
+                                to="/all-items?filter=men" 
                                 className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors py-2"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Men
-                            </a>
-                            <a 
-                                href="#" 
+                            </Link>
+                            <Link 
+                                to="/all-items?filter=women" 
                                 className="text-[#232321] hover:text-[#4A69E2] font-medium transition-colors py-2"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Women
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 )}
