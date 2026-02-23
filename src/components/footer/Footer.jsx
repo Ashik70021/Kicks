@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Logo from '../common/Logo';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
@@ -132,12 +133,8 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Logo - Half Visible */}
-                <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 left-4 right-4 sm:left-8 sm:right-8 md:left-12 md:right-12 lg:left-16 lg:right-16 pointer-events-none">
-                    <img 
-                        src="/Images/Group.png" 
-                        alt="Kicks" 
-                        className="w-full h-auto transform translate-y-1/2"
-                    />
+                <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden translate-y-1/2 flex justify-center">
+                    <Logo />
                 </div>
             </div>
 
