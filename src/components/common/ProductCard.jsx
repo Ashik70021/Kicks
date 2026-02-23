@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
     const { id, image, name, price, isNew } = product;
-    const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col w-full group cursor-pointer">
+        <Link to={`/product/${id}`} className="flex flex-col w-full group cursor-pointer">
             {/* Image */}
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden border-4 border-white shadow-md transition-shadow duration-300 group-hover:shadow-xl">
                 {/* New Tag */}
@@ -29,14 +28,13 @@ const ProductCard = ({ product }) => {
 
                 {/* Button */}
                 <button
-                    onClick={() => navigate(`/product/${id}`)}
                     className="w-full bg-[#232321] hover:bg-[#3a3a38] transition-colors text-white text-[10px] sm:text-sm  py-2 sm:py-3 px-2 sm:px-4 rounded-lg tracking-wide flex items-center justify-center gap-1 whitespace-nowrap"
                 >
                     VIEW PRODUCT -{" "}
                     <span className="text-[#FFA52F]">${price}</span>
                 </button>
             </div>
-        </div>
+        </Link>
     );
 };
 
